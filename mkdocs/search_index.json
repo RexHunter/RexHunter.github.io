@@ -1,0 +1,119 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome-to-mkdocs",
+            "text": "For full documentation visit  mkdocs.org .",
+            "title": "Welcome to MkDocs"
+        },
+        {
+            "location": "/#commands",
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
+            "title": "Commands"
+        },
+        {
+            "location": "/#project-layout",
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Project layout"
+        },
+        {
+            "location": "/about/",
+            "text": "About page\n\n\nHello that about page",
+            "title": "About"
+        },
+        {
+            "location": "/about/#about-page",
+            "text": "Hello that about page",
+            "title": "About page"
+        },
+        {
+            "location": "/disks/",
+            "text": "Linux Disk usages\n\n\nfdisk\n command\n\n\nThat command will show list of devices that're avaible on your system\n\n\n$ fdisk -l\n\n\n\n\nmount\n command\n\n\nTo mount device need to specify device name and mount folder\n\n\n$ mount /dev/sdb1 /media/my-device\n\n\n\n\nIn this command we can specify type of filesystem\n\n\n$ mount -t ext4 /dev/sdb1 /media/my-device\n\n\n\n\nAdd second HDD\n\n\nStep#1\n\n\nIf it's new hard drive we need to create partition on it\n\n\n$ fdisk /dev/sdb\n\n\n\n\nHere's then list of command that support \nfdisk\n:\n\n\n\n\nm\n \u2013 print help\n\n\np\n \u2013 print the partition table\n\n\nn\n \u2013 create a new partition\n\n\nd\n \u2013 delete a partition\n\n\nq\n \u2013 quit without saving changes\n\n\nw\n \u2013 write the new partition table and exit\n\n\n\n\nStep#2\n\n\nFormat new disk with \nmkfs.ext4\n command\n\n\n$ mkfs.ext4 /dev/sdb1\n\n\n\n\nStep#3\n\n\nCreate new mount point and do a mount\n\n\n$ mkdir /disk2\n$ mount -t ext4 /dev/sdb1 /disk2\n\n\n\n\nIf you what that not only root user can use that mount, you need add permissions\n\n\n$ chmod 777 /disk2\n\n\n\n\nStep#4\n\n\nUpdate \n/etc/fstab\n file\nIf you what mount disk automaticaly on boot you need to add that line to your \n/etc/fstab\n config:\n\n\n/dev/sdb1 /disk2 ext4 defaults,errors=remount-ro,user,rw 0 1",
+            "title": "Disks"
+        },
+        {
+            "location": "/disks/#linux-disk-usages",
+            "text": "",
+            "title": "Linux Disk usages"
+        },
+        {
+            "location": "/disks/#fdisk-command",
+            "text": "That command will show list of devices that're avaible on your system  $ fdisk -l",
+            "title": "fdisk command"
+        },
+        {
+            "location": "/disks/#mount-command",
+            "text": "To mount device need to specify device name and mount folder  $ mount /dev/sdb1 /media/my-device  In this command we can specify type of filesystem  $ mount -t ext4 /dev/sdb1 /media/my-device",
+            "title": "mount command"
+        },
+        {
+            "location": "/disks/#add-second-hdd",
+            "text": "Step#1  If it's new hard drive we need to create partition on it  $ fdisk /dev/sdb  Here's then list of command that support  fdisk :   m  \u2013 print help  p  \u2013 print the partition table  n  \u2013 create a new partition  d  \u2013 delete a partition  q  \u2013 quit without saving changes  w  \u2013 write the new partition table and exit   Step#2  Format new disk with  mkfs.ext4  command  $ mkfs.ext4 /dev/sdb1  Step#3  Create new mount point and do a mount  $ mkdir /disk2\n$ mount -t ext4 /dev/sdb1 /disk2  If you what that not only root user can use that mount, you need add permissions  $ chmod 777 /disk2  Step#4  Update  /etc/fstab  file\nIf you what mount disk automaticaly on boot you need to add that line to your  /etc/fstab  config:  /dev/sdb1 /disk2 ext4 defaults,errors=remount-ro,user,rw 0 1",
+            "title": "Add second HDD"
+        },
+        {
+            "location": "/network/",
+            "text": "Networks\n\n\nBridge\n\n\nWhat is Bridge?\n\n\nA bridge is a device that separates two or more network segments within one logical network (e.g. a single IP-subnet).\n\n\nA bridge is usually placed between two separate groups of computers that talk with each other, but not that much with the computers in the other group. A good example of this is to consider a cluster of Macintoshes and a cluster of Unix machines. Both of these groups of machines tend to be quite chatty amongst themselves, and the traffic they produce on the network causes collisions for the other machines who are trying to speak to one another.\n\n\nThe job of the bridge is to examine the destination of the data packets one at a time and decide whether or not to pass the packets to the other side of the Ethernet segment. The result is a faster, quieter network with less collisions.\n\n\nThe bridging code decides whether to bridge data or to drop it not by looking at the protocol type (IP, IPX, NetBEUI), but by looking at the MAC-address unique to each NIC.\n\n\nImportant: It's vital to understand that a bridge is neither a router nor a fire-wall. Spoken in simple term a bridge behaves like a network switch (i.e. Layer 2 Switch), making it a transparent network component (which is not absolutely true, but nearly). Read more about this at Section 4.\n\n\nIn addition, you can overcome hardware incompatibilities with a bridge, without leaving the address-range of your IP-net or subnet. E.g. it's possible to bridge between different physical media like 10 Base T and 100 Base TX.\n\n\nMy personal reason for starting to set up a bridge was that in my work I had to connect Fast Ethernet components to a existing HP Voice Grade network, which is a proprietary networking standard.\n\n\nMore details via that \nlink",
+            "title": "Network"
+        },
+        {
+            "location": "/network/#networks",
+            "text": "",
+            "title": "Networks"
+        },
+        {
+            "location": "/network/#bridge",
+            "text": "What is Bridge?  A bridge is a device that separates two or more network segments within one logical network (e.g. a single IP-subnet).  A bridge is usually placed between two separate groups of computers that talk with each other, but not that much with the computers in the other group. A good example of this is to consider a cluster of Macintoshes and a cluster of Unix machines. Both of these groups of machines tend to be quite chatty amongst themselves, and the traffic they produce on the network causes collisions for the other machines who are trying to speak to one another.  The job of the bridge is to examine the destination of the data packets one at a time and decide whether or not to pass the packets to the other side of the Ethernet segment. The result is a faster, quieter network with less collisions.  The bridging code decides whether to bridge data or to drop it not by looking at the protocol type (IP, IPX, NetBEUI), but by looking at the MAC-address unique to each NIC.  Important: It's vital to understand that a bridge is neither a router nor a fire-wall. Spoken in simple term a bridge behaves like a network switch (i.e. Layer 2 Switch), making it a transparent network component (which is not absolutely true, but nearly). Read more about this at Section 4.  In addition, you can overcome hardware incompatibilities with a bridge, without leaving the address-range of your IP-net or subnet. E.g. it's possible to bridge between different physical media like 10 Base T and 100 Base TX.  My personal reason for starting to set up a bridge was that in my work I had to connect Fast Ethernet components to a existing HP Voice Grade network, which is a proprietary networking standard.  More details via that  link",
+            "title": "Bridge"
+        },
+        {
+            "location": "/virtualbox/",
+            "text": "Virtualbox Setup\n\n\nfdisk\n command\n\n\nThat command will show list of devices that're avaible on your system\n\n\n$ fdisk -l\n\n\n\n\nmount\n command\n\n\nTo mount device need to specify device name and mount folder\n\n\n$ mount /dev/sdb1 /media/my-device\n\n\n\n\nIn this command we can specify type of filesystem\n\n\n$ mount -t ext4 /dev/sdb1 /media/my-device\n\n\n\n\nAdd second HDD\n\n\nStep#1\n\n\nIf it's new hard drive we need to create partition on it\n\n\n$ fdisk /dev/sdb\n\n\n\n\nHere's then list of command that support \nfdisk\n:\n\n\n\n\nm\n \u2013 print help\n\n\np\n \u2013 print the partition table\n\n\nn\n \u2013 create a new partition\n\n\nd\n \u2013 delete a partition\n\n\nq\n \u2013 quit without saving changes\n\n\nw\n \u2013 write the new partition table and exit\n\n\n\n\nStep#2\n\n\nFormat new disk with \nmkfs.ext4\n command\n\n\n$ mkfs.ext4 /dev/sdb1\n\n\n\n\nStep#3\n\n\nCreate new mount point and do a mount\n\n\n$ mkdir /disk2\n$ mount -t ext4 /dev/sdb1 /disk2\n\n\n\n\nIf you what that not only root user can use that mount, you need add permissions\n\n\n$ chmod 777 /disk2\n\n\n\n\nStep#4\n\n\nUpdate \n/etc/fstab\n file\nIf you what mount disk automaticaly on boot you need to add that line to your \n/etc/fstab\n config:\n\n\n/dev/sdb1 /disk2 ext4 defaults,errors=remount-ro,user,rw 0 1",
+            "title": "Virtualbox"
+        },
+        {
+            "location": "/virtualbox/#virtualbox-setup",
+            "text": "",
+            "title": "Virtualbox Setup"
+        },
+        {
+            "location": "/virtualbox/#fdisk-command",
+            "text": "That command will show list of devices that're avaible on your system  $ fdisk -l",
+            "title": "fdisk command"
+        },
+        {
+            "location": "/virtualbox/#mount-command",
+            "text": "To mount device need to specify device name and mount folder  $ mount /dev/sdb1 /media/my-device  In this command we can specify type of filesystem  $ mount -t ext4 /dev/sdb1 /media/my-device",
+            "title": "mount command"
+        },
+        {
+            "location": "/virtualbox/#add-second-hdd",
+            "text": "Step#1  If it's new hard drive we need to create partition on it  $ fdisk /dev/sdb  Here's then list of command that support  fdisk :   m  \u2013 print help  p  \u2013 print the partition table  n  \u2013 create a new partition  d  \u2013 delete a partition  q  \u2013 quit without saving changes  w  \u2013 write the new partition table and exit   Step#2  Format new disk with  mkfs.ext4  command  $ mkfs.ext4 /dev/sdb1  Step#3  Create new mount point and do a mount  $ mkdir /disk2\n$ mount -t ext4 /dev/sdb1 /disk2  If you what that not only root user can use that mount, you need add permissions  $ chmod 777 /disk2  Step#4  Update  /etc/fstab  file\nIf you what mount disk automaticaly on boot you need to add that line to your  /etc/fstab  config:  /dev/sdb1 /disk2 ext4 defaults,errors=remount-ro,user,rw 0 1",
+            "title": "Add second HDD"
+        },
+        {
+            "location": "/Hello/",
+            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Home"
+        },
+        {
+            "location": "/Hello/#welcome-to-mkdocs",
+            "text": "For full documentation visit  mkdocs.org .",
+            "title": "Welcome to MkDocs"
+        },
+        {
+            "location": "/Hello/#commands",
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
+            "title": "Commands"
+        },
+        {
+            "location": "/Hello/#project-layout",
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Project layout"
+        }
+    ]
+}
