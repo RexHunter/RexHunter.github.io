@@ -8,7 +8,7 @@
   
   
   
-  <title>About - My Docs</title>
+  <title>Linux commands - My Docs</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "About";
-    var mkdocs_page_input_path = "about.md";
-    var mkdocs_page_url = "/about/";
+    var mkdocs_page_name = "Linux commands";
+    var mkdocs_page_input_path = "linux_commands.md";
+    var mkdocs_page_url = "/linux_commands/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -62,15 +62,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">About</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#about-page">About page</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../about/">About</a>
         
     </li>
 <li>
@@ -83,8 +76,17 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../linux_commands/">Linux commands</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Linux commands</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#linux-commands">Linux commands</a></li>
+                
+                    <li><a class="toctree-l4" href="#grep">Grep</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -162,7 +164,7 @@
     
       
     
-    <li>About</li>
+    <li>Linux commands</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -172,8 +174,78 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="about-page">About page</h1>
-<p>Hello that about page</p>
+                <h1 id="linux-commands">Linux commands</h1>
+<h2 id="grep">Grep</h2>
+<p>Structure
+- Find row in directory files[^1]</p>
+<p>The quick brown fox[^1] jumped over the lazy dog[^2].</p>
+<p>[^1]: Foxes are red
+[^2]: Dogs are usually not red</p>
+<h3 id="search-in-file">Search in file</h3>
+<p><strong>To find rows in file that apply to expression:</strong>
+<code>$ grep 'exprassion' file_name</code></p>
+<p>Example:</p>
+<pre><code>$ cat example.txt
+
+Hello, world!
+hello
+Goodby, my friend
+
+</code></pre>
+
+<pre><code>$ grep Hello example.txt
+
+Hello, world!
+hello
+
+</code></pre>
+
+<p>[^1]<strong>To find rows that apply to expression in hole directory:</strong>
+<code>grep -r 'exprassion' /path/do/directory</code></p>
+<p>Example:</p>
+<pre><code class="shell">$ ls -l
+
+-rw-r--r-- 1 user user 6 Dec 25 18:28 hello1.txt
+-rw-r--r-- 1 user user 5 Dec 25 18:28 hello2.txt
+</code></pre>
+
+<pre><code class="shell">$ grep -r hello ./
+
+./hello1.txt:HelloMyFriend
+./hello1.txt:Hello My Friend
+</code></pre>
+
+<p><strong>To print only rows without filename need to use additional parameter <code>-h</code></strong></p>
+<pre><code class="shell">$ grep -hr hello ./
+
+Hello
+
+</code></pre>
+
+<p><strong>To find specific word in file user paramater <code>-w</code></strong></p>
+<pre><code class="shell">$ cat example.txt
+
+HelloMyFriend
+Hello My Friend
+</code></pre>
+
+<pre><code>$ grep -w hello example.txt
+
+Hello My Friend
+
+</code></pre>
+
+<p>To print number of line where expression was found use parameter <code>-rn</code></p>
+<pre><code class="shell">$ cat example.txt
+
+empty string
+Hello My Friend
+</code></pre>
+
+<pre><code class="shell">$ grep -rn hello example.txt
+
+2:Hello My Friend
+</code></pre>
               
             </div>
           </div>
@@ -181,10 +253,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../disks/" class="btn btn-neutral float-right" title="Disks">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../network/" class="btn btn-neutral float-right" title="Network">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../disks/" class="btn btn-neutral" title="Disks"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -210,10 +282,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../disks/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../disks/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../network/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

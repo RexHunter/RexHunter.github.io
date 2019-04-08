@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2019-03-06</lastmod>
+     <lastmod>2019-04-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>None/about/</loc>
-     <lastmod>2019-03-06</lastmod>
+     <lastmod>2019-04-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +20,15 @@
     
     <url>
      <loc>None/disks/</loc>
-     <lastmod>2019-03-06</lastmod>
+     <lastmod>2019-04-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/linux_commands/</loc>
+     <lastmod>2019-04-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +36,7 @@
     
     <url>
      <loc>None/network/</loc>
-     <lastmod>2019-03-06</lastmod>
+     <lastmod>2019-04-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,7 +44,7 @@
     
     <url>
      <loc>None/virtualbox/</loc>
-     <lastmod>2019-03-06</lastmod>
+     <lastmod>2019-04-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -45,7 +53,23 @@
         
     <url>
      <loc>None/Hello/</loc>
-     <lastmod>2019-03-06</lastmod>
+     <lastmod>2019-04-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>None/consul/consul-template/</loc>
+     <lastmod>2019-04-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/consul/consul/</loc>
+     <lastmod>2019-04-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

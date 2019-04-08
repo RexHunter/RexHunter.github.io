@@ -52,8 +52,48 @@
         },
         {
             "location": "/disks/#add-second-hdd",
-            "text": "Step#1  If it's new hard drive we need to create partition on it  $ fdisk /dev/sdb  Here's then list of command that support  fdisk :   m  \u2013 print help  p  \u2013 print the partition table  n  \u2013 create a new partition  d  \u2013 delete a partition  q  \u2013 quit without saving changes  w  \u2013 write the new partition table and exit   Step#2  Format new disk with  mkfs.ext4  command  $ mkfs.ext4 /dev/sdb1  Step#3  Create new mount point and do a mount  $ mkdir /disk2\n$ mount -t ext4 /dev/sdb1 /disk2  If you what that not only root user can use that mount, you need add permissions  $ chmod 777 /disk2  Step#4  Update  /etc/fstab  file\nIf you what mount disk automaticaly on boot you need to add that line to your  /etc/fstab  config:  /dev/sdb1 /disk2 ext4 defaults,errors=remount-ro,user,rw 0 1",
+            "text": "",
             "title": "Add second HDD"
+        },
+        {
+            "location": "/disks/#step1",
+            "text": "If it's new hard drive we need to create partition on it  $ fdisk /dev/sdb  Here's then list of command that support  fdisk :   m  \u2013 print help  p  \u2013 print the partition table  n  \u2013 create a new partition  d  \u2013 delete a partition  q  \u2013 quit without saving changes  w  \u2013 write the new partition table and exit",
+            "title": "Step#1"
+        },
+        {
+            "location": "/disks/#step2",
+            "text": "Format new disk with  mkfs.ext4  command  $ mkfs.ext4 /dev/sdb1",
+            "title": "Step#2"
+        },
+        {
+            "location": "/disks/#step3",
+            "text": "Create new mount point and do a mount  $ mkdir /disk2\n$ mount -t ext4 /dev/sdb1 /disk2  If you what that not only root user can use that mount, you need add permissions  $ chmod 777 /disk2",
+            "title": "Step#3"
+        },
+        {
+            "location": "/disks/#step4",
+            "text": "Update  /etc/fstab  file\nIf you what mount disk automaticaly on boot you need to add that line to your  /etc/fstab  config:  /dev/sdb1 /disk2 ext4 defaults,errors=remount-ro,user,rw 0 1",
+            "title": "Step#4"
+        },
+        {
+            "location": "/linux_commands/",
+            "text": "Linux commands\n\n\nGrep\n\n\nStructure\n- Find row in directory files[^1]\n\n\nThe quick brown fox[^1] jumped over the lazy dog[^2].\n\n\n[^1]: Foxes are red\n[^2]: Dogs are usually not red\n\n\nSearch in file\n\n\nTo find rows in file that apply to expression:\n\n\n$ grep 'exprassion' file_name\n\n\nExample:\n\n\n$ cat example.txt\n\nHello, world!\nhello\nGoodby, my friend\n\n\n\n\n\n$ grep Hello example.txt\n\nHello, world!\nhello\n\n\n\n\n\n[^1]\nTo find rows that apply to expression in hole directory:\n\n\ngrep -r 'exprassion' /path/do/directory\n\n\nExample:\n\n\n$ ls -l\n\n-rw-r--r-- 1 user user 6 Dec 25 18:28 hello1.txt\n-rw-r--r-- 1 user user 5 Dec 25 18:28 hello2.txt\n\n\n\n\n$ grep -r hello ./\n\n./hello1.txt:HelloMyFriend\n./hello1.txt:Hello My Friend\n\n\n\n\nTo print only rows without filename need to use additional parameter \n-h\n\n\n$ grep -hr hello ./\n\nHello\n\n\n\n\n\nTo find specific word in file user paramater \n-w\n\n\n$ cat example.txt\n\nHelloMyFriend\nHello My Friend\n\n\n\n\n$ grep -w hello example.txt\n\nHello My Friend\n\n\n\n\n\nTo print number of line where expression was found use parameter \n-rn\n\n\n$ cat example.txt\n\nempty string\nHello My Friend\n\n\n\n\n$ grep -rn hello example.txt\n\n2:Hello My Friend",
+            "title": "Linux commands"
+        },
+        {
+            "location": "/linux_commands/#linux-commands",
+            "text": "",
+            "title": "Linux commands"
+        },
+        {
+            "location": "/linux_commands/#grep",
+            "text": "Structure\n- Find row in directory files[^1]  The quick brown fox[^1] jumped over the lazy dog[^2].  [^1]: Foxes are red\n[^2]: Dogs are usually not red",
+            "title": "Grep"
+        },
+        {
+            "location": "/linux_commands/#search-in-file",
+            "text": "To find rows in file that apply to expression:  $ grep 'exprassion' file_name  Example:  $ cat example.txt\n\nHello, world!\nhello\nGoodby, my friend  $ grep Hello example.txt\n\nHello, world!\nhello  [^1] To find rows that apply to expression in hole directory:  grep -r 'exprassion' /path/do/directory  Example:  $ ls -l\n\n-rw-r--r-- 1 user user 6 Dec 25 18:28 hello1.txt\n-rw-r--r-- 1 user user 5 Dec 25 18:28 hello2.txt  $ grep -r hello ./\n\n./hello1.txt:HelloMyFriend\n./hello1.txt:Hello My Friend  To print only rows without filename need to use additional parameter  -h  $ grep -hr hello ./\n\nHello  To find specific word in file user paramater  -w  $ cat example.txt\n\nHelloMyFriend\nHello My Friend  $ grep -w hello example.txt\n\nHello My Friend  To print number of line where expression was found use parameter  -rn  $ cat example.txt\n\nempty string\nHello My Friend  $ grep -rn hello example.txt\n\n2:Hello My Friend",
+            "title": "Search in file"
         },
         {
             "location": "/network/",
@@ -67,8 +107,13 @@
         },
         {
             "location": "/network/#bridge",
-            "text": "What is Bridge?  A bridge is a device that separates two or more network segments within one logical network (e.g. a single IP-subnet).  A bridge is usually placed between two separate groups of computers that talk with each other, but not that much with the computers in the other group. A good example of this is to consider a cluster of Macintoshes and a cluster of Unix machines. Both of these groups of machines tend to be quite chatty amongst themselves, and the traffic they produce on the network causes collisions for the other machines who are trying to speak to one another.  The job of the bridge is to examine the destination of the data packets one at a time and decide whether or not to pass the packets to the other side of the Ethernet segment. The result is a faster, quieter network with less collisions.  The bridging code decides whether to bridge data or to drop it not by looking at the protocol type (IP, IPX, NetBEUI), but by looking at the MAC-address unique to each NIC.  Important: It's vital to understand that a bridge is neither a router nor a fire-wall. Spoken in simple term a bridge behaves like a network switch (i.e. Layer 2 Switch), making it a transparent network component (which is not absolutely true, but nearly). Read more about this at Section 4.  In addition, you can overcome hardware incompatibilities with a bridge, without leaving the address-range of your IP-net or subnet. E.g. it's possible to bridge between different physical media like 10 Base T and 100 Base TX.  My personal reason for starting to set up a bridge was that in my work I had to connect Fast Ethernet components to a existing HP Voice Grade network, which is a proprietary networking standard.  More details via that  link",
+            "text": "",
             "title": "Bridge"
+        },
+        {
+            "location": "/network/#what-is-bridge",
+            "text": "A bridge is a device that separates two or more network segments within one logical network (e.g. a single IP-subnet).  A bridge is usually placed between two separate groups of computers that talk with each other, but not that much with the computers in the other group. A good example of this is to consider a cluster of Macintoshes and a cluster of Unix machines. Both of these groups of machines tend to be quite chatty amongst themselves, and the traffic they produce on the network causes collisions for the other machines who are trying to speak to one another.  The job of the bridge is to examine the destination of the data packets one at a time and decide whether or not to pass the packets to the other side of the Ethernet segment. The result is a faster, quieter network with less collisions.  The bridging code decides whether to bridge data or to drop it not by looking at the protocol type (IP, IPX, NetBEUI), but by looking at the MAC-address unique to each NIC.  Important: It's vital to understand that a bridge is neither a router nor a fire-wall. Spoken in simple term a bridge behaves like a network switch (i.e. Layer 2 Switch), making it a transparent network component (which is not absolutely true, but nearly). Read more about this at Section 4.  In addition, you can overcome hardware incompatibilities with a bridge, without leaving the address-range of your IP-net or subnet. E.g. it's possible to bridge between different physical media like 10 Base T and 100 Base TX.  My personal reason for starting to set up a bridge was that in my work I had to connect Fast Ethernet components to a existing HP Voice Grade network, which is a proprietary networking standard.  More details via that  link",
+            "title": "What is Bridge?"
         },
         {
             "location": "/virtualbox/",
@@ -92,8 +137,28 @@
         },
         {
             "location": "/virtualbox/#add-second-hdd",
-            "text": "Step#1  If it's new hard drive we need to create partition on it  $ fdisk /dev/sdb  Here's then list of command that support  fdisk :   m  \u2013 print help  p  \u2013 print the partition table  n  \u2013 create a new partition  d  \u2013 delete a partition  q  \u2013 quit without saving changes  w  \u2013 write the new partition table and exit   Step#2  Format new disk with  mkfs.ext4  command  $ mkfs.ext4 /dev/sdb1  Step#3  Create new mount point and do a mount  $ mkdir /disk2\n$ mount -t ext4 /dev/sdb1 /disk2  If you what that not only root user can use that mount, you need add permissions  $ chmod 777 /disk2  Step#4  Update  /etc/fstab  file\nIf you what mount disk automaticaly on boot you need to add that line to your  /etc/fstab  config:  /dev/sdb1 /disk2 ext4 defaults,errors=remount-ro,user,rw 0 1",
+            "text": "",
             "title": "Add second HDD"
+        },
+        {
+            "location": "/virtualbox/#step1",
+            "text": "If it's new hard drive we need to create partition on it  $ fdisk /dev/sdb  Here's then list of command that support  fdisk :   m  \u2013 print help  p  \u2013 print the partition table  n  \u2013 create a new partition  d  \u2013 delete a partition  q  \u2013 quit without saving changes  w  \u2013 write the new partition table and exit",
+            "title": "Step#1"
+        },
+        {
+            "location": "/virtualbox/#step2",
+            "text": "Format new disk with  mkfs.ext4  command  $ mkfs.ext4 /dev/sdb1",
+            "title": "Step#2"
+        },
+        {
+            "location": "/virtualbox/#step3",
+            "text": "Create new mount point and do a mount  $ mkdir /disk2\n$ mount -t ext4 /dev/sdb1 /disk2  If you what that not only root user can use that mount, you need add permissions  $ chmod 777 /disk2",
+            "title": "Step#3"
+        },
+        {
+            "location": "/virtualbox/#step4",
+            "text": "Update  /etc/fstab  file\nIf you what mount disk automaticaly on boot you need to add that line to your  /etc/fstab  config:  /dev/sdb1 /disk2 ext4 defaults,errors=remount-ro,user,rw 0 1",
+            "title": "Step#4"
         },
         {
             "location": "/Hello/",
@@ -114,6 +179,51 @@
             "location": "/Hello/#project-layout",
             "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
             "title": "Project layout"
+        },
+        {
+            "location": "/consul/consul-template/",
+            "text": "Consul template usage\n\n\nConsul template is an application that allow you to update your configuration in real-time. \n\n\nThat's opensource project so you can find sources if you need via that \nlink\n\n\nInstall consul-template\n\n\nTo install consul-template you need to download bundle with one executable file \nconsul-template\n\n\nYou can find latest version that you need on \nrelease notes\n page\n\n\nFor example we will use \nconsul-template_0.19.5\n\n\n$ wget https://releases.hashicorp.com/consul-template/0.19.5/consul-template_0.19.5_linux_amd64.tgz  -P /tmp\n$ tar -zxvf /tmp/consul-template_0.19.5_linux_amd64.tgz -C /usr/local/bin\n$ rm -fr /tmp/consul-template_0.19.5_linux_amd64.tgz \n\n\n\n\nAfter installation you can use \nconsul-template\n command from anywhere\n\n\nLet's verify if commands works:\n\n\n$ consul-template --version\nconsul-template v0.19.5 (57b6c71)\n\n\n\n\nCreate configuration file based on consul data\n\n\nFirst of all we need to create \n*.tpl\n file, that will contains information about where find content that we need\n\n\n$ cat consul-key-example.tpl \n{{ \"consul/key/example\" | key }}\n\n\n\n\nNow we can easily start consul template. That command we use your template to pull configuration from consul and put it to file \nout.conf\n and that command will do it only once. \n\n\n$ consul-template -template \"consul-key-example.tpl:out.conf\" -once",
+            "title": "Consul template"
+        },
+        {
+            "location": "/consul/consul-template/#consul-template-usage",
+            "text": "Consul template is an application that allow you to update your configuration in real-time.   That's opensource project so you can find sources if you need via that  link",
+            "title": "Consul template usage"
+        },
+        {
+            "location": "/consul/consul-template/#install-consul-template",
+            "text": "To install consul-template you need to download bundle with one executable file  consul-template  You can find latest version that you need on  release notes  page  For example we will use  consul-template_0.19.5  $ wget https://releases.hashicorp.com/consul-template/0.19.5/consul-template_0.19.5_linux_amd64.tgz  -P /tmp\n$ tar -zxvf /tmp/consul-template_0.19.5_linux_amd64.tgz -C /usr/local/bin\n$ rm -fr /tmp/consul-template_0.19.5_linux_amd64.tgz   After installation you can use  consul-template  command from anywhere  Let's verify if commands works:  $ consul-template --version\nconsul-template v0.19.5 (57b6c71)",
+            "title": "Install consul-template"
+        },
+        {
+            "location": "/consul/consul-template/#create-configuration-file-based-on-consul-data",
+            "text": "First of all we need to create  *.tpl  file, that will contains information about where find content that we need  $ cat consul-key-example.tpl \n{{ \"consul/key/example\" | key }}  Now we can easily start consul template. That command we use your template to pull configuration from consul and put it to file  out.conf  and that command will do it only once.   $ consul-template -template \"consul-key-example.tpl:out.conf\" -once",
+            "title": "Create configuration file based on consul data"
+        },
+        {
+            "location": "/consul/consul/",
+            "text": "Consul usage\n\n\nConsul it's application that can store\\update your application configuration.\n\n\nCreate environment file for consul\n\n\nIn case when you can have more than one consul cluster and you need to help connection to them, it's better to create different \n*.env\n file to them.\n\n\nconsul\n cli tool required to set ENV variables list: \n\n\n\n\nCONSUL_HTTP_SSL\n - is used to enable or disable ssl verification\n\n\nCONSUL_HTTP_ADDR\n - https address to your consul cluster\n\n\nCONSUL_HTTP_TOKEN\n - access token to your consul\n\n\n\n\n*.env\n file example:\n\n\nexport CONSUL_HTTP_SSL=false\n\nexport CONSUL_HTTP_ADDR='http://you-server-address'\n\nexport CONSUL_HTTP_TOKEN='you-access-token'\n\n\n\n\nExport consul kv to json\n\n\nTo work with consul kv storage we have command \nconsul kv\n. \n\n\nBefore start you should be sure that you have setted correct values to you env variables\n\n\nConsul export example:\n\n\n$ consul kv export your/consul/key >> export.json\n\n\n\n\nImport consul kv from json\n\n\nWhen you already export kv from consul and ready to import it to another place you have \nconsul kv import\n command.\n\n\nConsul import examle:\n\n\n$ consul kv import @import.json",
+            "title": "Consul"
+        },
+        {
+            "location": "/consul/consul/#consul-usage",
+            "text": "Consul it's application that can store\\update your application configuration.",
+            "title": "Consul usage"
+        },
+        {
+            "location": "/consul/consul/#create-environment-file-for-consul",
+            "text": "In case when you can have more than one consul cluster and you need to help connection to them, it's better to create different  *.env  file to them.  consul  cli tool required to set ENV variables list:    CONSUL_HTTP_SSL  - is used to enable or disable ssl verification  CONSUL_HTTP_ADDR  - https address to your consul cluster  CONSUL_HTTP_TOKEN  - access token to your consul   *.env  file example:  export CONSUL_HTTP_SSL=false\n\nexport CONSUL_HTTP_ADDR='http://you-server-address'\n\nexport CONSUL_HTTP_TOKEN='you-access-token'",
+            "title": "Create environment file for consul"
+        },
+        {
+            "location": "/consul/consul/#export-consul-kv-to-json",
+            "text": "To work with consul kv storage we have command  consul kv .   Before start you should be sure that you have setted correct values to you env variables  Consul export example:  $ consul kv export your/consul/key >> export.json",
+            "title": "Export consul kv to json"
+        },
+        {
+            "location": "/consul/consul/#import-consul-kv-from-json",
+            "text": "When you already export kv from consul and ready to import it to another place you have  consul kv import  command.  Consul import examle:  $ consul kv import @import.json",
+            "title": "Import consul kv from json"
         }
     ]
 }
